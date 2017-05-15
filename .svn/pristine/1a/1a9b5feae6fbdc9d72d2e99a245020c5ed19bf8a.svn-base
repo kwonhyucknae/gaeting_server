@@ -1,0 +1,39 @@
+package test;
+
+import java.sql.ResultSet;
+import framework.BaseForm;
+
+public class kjg extends BaseForm {
+
+	private kjkdb db = new kjkdb();
+	public kjg()
+	{
+	}
+	
+	 /*
+	  * 2016-09-20
+	  * ±èÁö±¤
+	  * Å×½ºÆ® ÇÔ¼ö
+	  */
+	 public String getDog(String dog_id)
+	 {
+		 db.conOpen();
+		 
+		 boolean isArray = true;
+		 String returnVal = "";
+		 String sql = "SELECT * FROM gaeting_dev.Customer_dog where dog_id = ? "; 
+		try {
+			
+			 ResultSet rs = db.getDog(sql, dog_id);
+			 returnVal = ResultsetToJson(rs, isArray);
+			 
+		} catch (Exception e){
+			
+			returnVal = errorToJsonobject(e.getMessage(), isArray);
+			
+		} finally {
+			db.conClose();
+		}
+		return returnVal;
+	 }
+}

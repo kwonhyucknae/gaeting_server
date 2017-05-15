@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: gaetingdev
+Bundle-SymbolicName: gaetingdev
+Bundle-Version: 1.0.0.qualifier
+Export-Package: framework,
+ framework.database,
+ framework.properties,
+ test
